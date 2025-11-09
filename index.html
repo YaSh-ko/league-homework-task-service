@@ -4,8 +4,25 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Document</title>
+  <link rel="stylesheet" href="styles/css/style.css">
 </head>
 <body>
+  <main class="task-service">
+    <h1 class="task-service__title">Task API Tester</h1>
+
+
+    <div class="task-service__buttons-container">
+      <button class ="task-service__button task-service__button--blue" id="getTasksButton">GET All</button>
+      <button class = "task-service__button task-service__button--blue" id="getOneTaskButton">GET by ID</button>
+      <button class = "task-service__button task-service__button--green" id="createTaskButton">POST (Create)</button>
+      <button class = "task-service__button task-service__button--cian" id="updateTaskButton">PATCH (Update)</button>
+      <button class = "task-service__button task-service__button--red" id="deleteTaskButton">DELETE</button>
+    </div>
+
+    <div class = "task-service__form-container" id="formContainer"></div>
+
+    <div class="task-service__output" id="output">Результат появится здесь...</div>
+  </main>
   <script src="src/index.js" type="module"></script>
 </body>
 </html>

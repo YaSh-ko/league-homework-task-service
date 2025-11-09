@@ -1,0 +1,30 @@
+{
+  "name": "league-homework-task-service",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "build:css": "sass --watch styles/scss:styles/css",
+    "lint:css": "stylelint '**/*.{css,scss}' --fix",
+    "start": "live-server"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/YaSh-ko/league-homework-task-service.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/YaSh-ko/league-homework-task-service/issues"
+  },
+  "homepage": "https://github.com/YaSh-ko/league-homework-task-service#readme",
+  "devDependencies": {
+    "live-server": "^1.2.2",
+    "sass": "^1.93.3",
+    "stylelint": "^16.25.0",
+    "stylelint-config-recess-order": "^7.4.0",
+    "stylelint-config-standard-scss": "^16.0.0",
+    "stylelint-order": "^7.0.0"
+  }
+}

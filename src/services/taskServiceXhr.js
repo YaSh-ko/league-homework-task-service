@@ -1,5 +1,5 @@
 import { TaskService } from "./taskService.js";
-import { BASE_URL } from "../config.js";
+import { BASE_URL } from "../constans/config.js";
 
 export class TaskServiceXhrRealization extends TaskService {
 
