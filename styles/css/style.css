@@ -17,7 +17,7 @@ body {
   gap: 20px;
   align-items: center;
   padding: 40px;
-  margin-top: 20px;
+  margin-block: 20px;
   text-align: center;
   border-radius: 10px;
   box-shadow: 0 0 10px rgb(0 0 0 / 10%);
@@ -39,6 +39,12 @@ body {
   border: none;
   border-radius: 5px;
   transition: all 0.2s ease;
+}
+
+.task-service__button--submit {
+  padding: 5px 10px;
+  font-size: 14px;
+  background-color: #9e9e9e;
 }
 
 .task-service__button:hover {
@@ -63,8 +69,8 @@ body {
 
 .task-service__output {
   width: 100%;
-  max-height: 500px;
-  padding: 10px;
+  max-height: 60vh;
+  padding: 15px;
   overflow-y: auto;
   background: #f1f1f1;
   border-radius: 8px;
@@ -73,9 +79,45 @@ body {
 .task-service__task-container {
   display: flex;
   flex-direction: column;
-  padding: 10px;
+  padding: 15px;
   margin-bottom: 10px;
   text-align: left;
+  background-color: #f5f5f5;
+  border-radius: 5px;
+  box-shadow: 0 0 5px rgb(0 0 0 / 10%);
+}
+
+.task-service__task-container--important {
+  border-left: 4px solid #ff1e1e;
+}
+
+.task-service__task-container--completed {
+  color: #9e9e9e;
+  background-color: #f0f0f0;
+}
+
+.task-service__task-container--completed .task-service__task-name {
+  text-decoration: line-through;
+}
+
+.task-service__form {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+  align-items: center;
+  justify-content: center;
+  font-size: 14px;
+}
+
+.task-service__input {
+  padding: 5px 10px;
+  font-size: 14px;
   border: 1px black solid;
   border-radius: 5px;
+}
+
+.task-service__checkbox-container {
+  display: flex;
+  gap: 5px;
+  align-items: center;
 }
