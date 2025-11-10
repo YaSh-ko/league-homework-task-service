@@ -5,9 +5,10 @@ import { initUIHandlers } from "./ui/initUIHandlers.js";
 
 // Инициализация зависимостей
 const fetchService = new TaskServiceFetchRealization();
-const xhrService = new TaskServiceXhrRealization();
 const controller = new TaskRequestController(fetchService);
-const anotherContoller = new TaskRequestController(xhrService);
+
+// const xhrService = new TaskServiceXhrRealization();
+// const anotherContoller = new TaskRequestController(xhrService);
 
 // Инициализация интерфейса
 initUIHandlers(controller);
