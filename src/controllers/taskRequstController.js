@@ -12,13 +12,14 @@ export class TaskRequestController {
   /**
    * Получает все задачи
    * @async
+   * @param {Object} [filters] - Необязательные фильтры: { name?: string, isImportant?: boolean, isCompleted?: boolean }
    * @returns {Promise<Array>} Массив объектов задач
    * @throws {Error} Если произошла ошибка при получении задач
    */
-  async getTasks() {
+  async getTasks(filters) {
     try {
-      const tasks = await this.taskService.getTasks();
-      console.log("Все задачи получены");
+      const tasks = await this.taskService.getTasks(filters);
+      console.log("Все задачи получены", filters ? { filters } : '');
       console.log(tasks);
       return tasks;
     } catch (error) {

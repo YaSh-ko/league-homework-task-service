@@ -10,11 +10,21 @@ export class TaskServiceFetchRealization extends TaskService {
   /**
    * Получает все задачи с сервера
    * @async
+   * @param {Object} [filters] - Необязательные фильтры: { name?: string, isImportant?: boolean, isCompleted?: boolean }
    * @returns {Promise<Array>} Массив задач
    * @throws {Error} Если ответ от сервера некорректный или статус ошибки
    */
-  async getTasks() {
-    const response = await fetch(`${BASE_URL}/tasks`);
+  async getTasks(filters) {
+    const params = new URLSearchParams();
+    if (filters && typeof filters === 'object') {
+      const { name, isImportant, isCompleted } = filters;
+      if (name) params.set('name_like', name);
+      if (typeof isImportant === 'boolean') params.set('isImportant', String(isImportant));
+      if (typeof isCompleted === 'boolean') params.set('isCompleted', String(isCompleted));
+    }
+    const query = params.toString();
+    const url = query ? `${BASE_URL}/tasks?${query}` : `${BASE_URL}/tasks`;
+    const response = await fetch(url);
     let data = null;
 
     try {

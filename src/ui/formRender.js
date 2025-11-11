@@ -11,6 +11,12 @@ import { FormTypes } from '../constans/formTypes.js';
  *  - required: обязательно ли поле для заполнения (только для input)
  */
 const formSchemas = {
+  [FormTypes.GET_ALL]: [
+    { type: 'input', id: 'filterName', label: 'Название содержит' },
+    { type: 'checkbox', id: 'filterImportant', label: 'Только важные' },
+    { type: 'checkbox', id: 'filterCompleted', label: 'Только выполненные' },
+    { type: 'button', id: 'submitGetAll', text: 'Показать' }
+  ],
   [FormTypes.GET_ONE]: [
     { type: 'input', id: 'taskId', label: 'ID Задачи', required: true },
     { type: 'button', id: 'submitGetOne', text: 'Получить' }

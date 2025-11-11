@@ -16,6 +16,7 @@ export class TaskService {
   /**
    * Получает все задачи
    * @abstract
+   * @param {Object} [filters] - Необязательные фильтры: { name?: string, isImportant?: boolean, isCompleted?: boolean }
    * @throws {Error} Должен быть реализован в наследнике
    */
   getTasks() {

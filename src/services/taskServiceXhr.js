@@ -9,13 +9,23 @@ export class TaskServiceXhrRealization extends TaskService {
 
   /**
    * Получает все задачи с сервера
+   * @param {Object} [filters] - Необязательные фильтры: { name?: string, isImportant?: boolean, isCompleted?: boolean }
    * @returns {Promise<Array>} Массив задач
    * @throws {Error} Если ответ сервера некорректный или статус ошибки
    */
-  getTasks() {
+  getTasks(filters) {
     return new Promise((resolve, reject) => {
       const xhr = new XMLHttpRequest();
-      xhr.open("GET", `${BASE_URL}/tasks`, true);
+      const params = new URLSearchParams();
+      if (filters && typeof filters === 'object') {
+        const { name, isImportant, isCompleted } = filters;
+        if (name) params.set('name_like', name);
+        if (typeof isImportant === 'boolean') params.set('isImportant', String(isImportant));
+        if (typeof isCompleted === 'boolean') params.set('isCompleted', String(isCompleted));
+      }
+      const query = params.toString();
+      const url = query ? `${BASE_URL}/tasks?${query}` : `${BASE_URL}/tasks`;
+      xhr.open("GET", url, true);
 
       xhr.onload = () => {
         try {

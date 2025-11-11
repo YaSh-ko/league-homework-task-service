@@ -21,15 +21,26 @@ export function initUIHandlers(controller) {
 
   // Получить все задачи
   elements.getTasksButton.addEventListener('click', async () => {
-    createFormContainer(elements.formContainer);
-    showMessage('Загрузка...');
-    try {
-      const tasks = await controller.getTasks();
-      clearOutput();
-      tasks.forEach(task => createTask(task));
-    } catch (error) {
-      showMessage('Ошибка при загрузке задач', error.message);
-    }
+    const form = createFormContainer(elements.formContainer, FormTypes.GET_ALL);
+    showMessage('Уточните фильтры (опционально) и нажмите Показать');
+
+    form.addEventListener('submit', async (e) => {
+      e.preventDefault();
+      showMessage('Загрузка...');
+      const filters = {
+        name: form.elements.filterName.value?.trim() || undefined,
+        isImportant: form.elements.filterImportant.checked ? true : undefined,
+        isCompleted: form.elements.filterCompleted.checked ? true : undefined,
+      };
+      try {
+        const tasks = await controller.getTasks(filters);
+        clearOutput();
+        tasks.forEach(task => createTask(task));
+        if (!tasks?.length) createTask(null);
+      } catch (error) {
+        showMessage('Ошибка при загрузке задач', error.message);
+      }
+    });
   });
 
   // Получить одну задачу
