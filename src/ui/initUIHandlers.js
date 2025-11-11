@@ -22,7 +22,7 @@ export function initUIHandlers(controller) {
   // Получить все задачи
   elements.getTasksButton.addEventListener('click', async () => {
     const form = createFormContainer(elements.formContainer, FormTypes.GET_ALL);
-    showMessage('Уточните фильтры (опционально) и нажмите Показать');
+    showMessage('Уточните фильтры');
 
     form.addEventListener('submit', async (e) => {
       e.preventDefault();
